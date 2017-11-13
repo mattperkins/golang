@@ -9,19 +9,19 @@ type SitemapIndex struct {
 	Locations []string `xml:"sitemap>loc"`
 }
 
+type News struct {
+	Title []string `xml:"url>news>title"`
+	Keywords []string `xml:"url>news>keywords"`
+	Locations []string `xml:"url>loc"`
+}
+
 func main() {
-	resp, _ := http.Get("https://www.washingtonpost.com/news-sitemap-index.xml")
-	bytes, _ := ioutil.ReadAll(resp.Body)
-	resp.Body.Close()
-
-	// bytes := washPostXML
-
 	var s SitemapIndex
-	xml.Unmarshal(bytes, &s)
-
-	fmt.Println(s.Locations)
+	var n News
 
 	for _, Location := range s.Locations{
-		fmt.Printf("\n%s",Location)
+		resp, _ := http.Get(Location)
+		bytes, _ := ioutil.ReadAll(resp.Body)
+		xml.Unmarshal(bytes, &n)
 	}
 }
