@@ -3,19 +3,17 @@
 
 package main
 
-import (
-"fmt"
+import ("fmt"
 "net/http"
 "io/ioutil"
-"encoding/xml"
-)
+"encoding/xml")
 
 type SitemapIndex struct {
-	Locations []Location `xml: "sitemap"`
+	Locations []Location `xml:"sitemap"`
 }
 
 type Location struct {
-	Loc string `xml: "loc"`
+	Loc string `xml:"loc"`
 }
 
 func (l Location) String() string {
