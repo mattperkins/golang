@@ -8,6 +8,11 @@ import ("fmt"
 "io/ioutil"
 "encoding/xml")
 
+// var washPostXML = []byte(`<sitemapindex>
+// 	<sitemap></sitemap>
+// 	<loc>http://exampleofusinglocalxml.com</loc>
+// 	</sitemapindex>`)
+
 type SitemapIndex struct {
 	Locations []Location `xml:"sitemap"`
 }
@@ -24,6 +29,8 @@ func main() {
 	resp, _ := http.Get("https://www.washingtonpost.com/news-sitemap-index.xml")
 	bytes, _ := ioutil.ReadAll(resp.Body)
 	resp.Body.Close()
+
+	// bytes := washPostXML
 
 	var s SitemapIndex
 	xml.Unmarshal(bytes, &s)
