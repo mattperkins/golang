@@ -1,5 +1,6 @@
 // [5 5]int = array
 // []int = slice
+// range = iterate over index value / value (e.g Location struct)
 
 package main
 
