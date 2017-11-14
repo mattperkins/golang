@@ -11,6 +11,6 @@ func say(s string){
 }
 
 func main(){
-	say("Hello")
+	go say("Hello") // go routine running concurrently
 	say("World!")
 }
