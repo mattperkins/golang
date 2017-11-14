@@ -1,3 +1,6 @@
+// defers the running of a function until the end of the surrounding function is met
+// i.e function is done or panic
+
 package main
 
 import "fmt"
